@@ -4,12 +4,13 @@ $(document).ready(function () {
     columns: [
       { data: 'Land' },
       { data: 'Unternehmen' },
-      { data: 'CO2' }
+      { data: 'CO2-Emissionen (t)' }
     ],
     language: {
       url: '//cdn.datatables.net/plug-ins/1.13.6/i18n/de-DE.json'
     }
   });
 });
+
 
 
