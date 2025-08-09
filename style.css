@@ -8,53 +8,37 @@ body {
 
 /* Hero-Video */
 .hero-video-container {
-  position: relative;
-  height: 100vh;
-  overflow: hidden;
-  margin: 0;
-  padding: 0;
+    position: relative;
+    height: 100vh;
+    overflow: hidden;
 }
 
-/* Iframe als „Cover“-Hintergrund */
 .hero-video-iframe-wrapper {
-  position: absolute;
-  inset: 0;
-  z-index: -1;           /* hinter dem Overlay/Content */
-  overflow: hidden;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none; /* Damit man nicht auf das Video klickt */
+    z-index: -1; /* Hinter den Text legen */
 }
 
-/* Füllt die gesamte Fläche, wie object-fit: cover */
 .hero-video-iframe {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  width: 177.78vh;       /* 100vh * (16/9) → deckt Höhe ab */
-  height: 100vh;
-  transform: translate(-50%, -50%);
-  pointer-events: none;  /* keine Klicks auf das Video */
+    width: 100%;
+    height: 100%;
+    border: none;
 }
 
-/* Fallback: sehr breiten Screens anpassen */
-@media (min-aspect-ratio: 16/9) {
-  .hero-video-iframe {
-    width: 100vw;
-    height: 56.25vw;     /* 100vw * (9/16) → deckt Breite ab */
-  }
-}
-
-/* Overlay/Text bleibt wie zuvor */
 .hero-overlay {
-  position: relative;
-  height: 100vh;
-  z-index: 1;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  color: #fff;
-  text-align: center;
-  /* optional leichte Abdunklung:
-  background: rgba(0,0,0,0.3);
-  */
+    position: relative;
+    z-index: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    color: white;
+    font-size: 2rem;
+    text-align: center;
 }
 
 /* Globale Nav */
@@ -82,3 +66,4 @@ body {
 #mainHeader.scrolled h1 {
   color: white;
 }
+
