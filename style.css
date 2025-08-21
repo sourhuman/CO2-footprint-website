@@ -1,0 +1,139 @@
+/* ===== Grundlagen ===== */
+* { box-sizing: border-box; }
+
+:root {
+  --clr-bg: #000;         /* Haupt-Hintergrund */
+  --clr-fg: #fff;         /* Haupt-Textfarbe */
+  --header-h: 110px;      /* Fallback; kann per JS angepasst werden */
+}
+
+html, body {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  scroll-behavior: smooth;
+  scroll-snap-type: y mandatory;
+  overflow-y: scroll;
+  background: var(--clr-bg);
+  color: var(--clr-fg);
+}
+
+/* --- Snap global aus, wenn <html> die Klasse .no-snap trägt --- */
+html.no-snap,
+html.no-snap body {
+  scroll-snap-type: none !important;
+}
+
+/* ===== Globaler Header ===== */
+#mainHeader {
+  position: fixed;
+  inset: 0 0 auto 0;
+  background-color: transparent;
+  z-index: 1000;
+  transition: background-color .3s ease;
+}
+#mainHeader.scrolled { background-color: var(--clr-bg); }
+#mainHeader .nav-link,
+#mainHeader .h1 { color: var(--clr-fg); }
+
+/* ===== Lokale Navigation ===== */
+.local-nav {
+  top: var(--header-h);
+  background-color: var(--clr-bg);
+}
+
+.sticky-top.local-nav{ top: var(--header-h); }
+.local-nav .nav-link { padding: .5rem 1rem; }
+.local-nav .nav-link.active { background-color: var(--clr-bg); }
+
+/* LTR/RTL-Ausrichtung */
+.local-nav .navbar-nav {justify-content: flex-start !important;}
+.local-nav[dir="rtl"] .navbar-nav { justify-content: flex-end !important; }
+.local-nav[dir="rtl"] .navbar-toggler { margin-left: auto; }
+
+/* ===== DataTable ===== */
+.dataTable { background-color: rgba(255, 255, 255, .5); }
+.dataTable th,
+.dataTable td { background-color: rgba(255, 255, 255, .315) !important; }
+
+/* ===== Logo ===== */
+.brand-logo {
+  width: clamp(40px, 8vw, 60px);
+  height: auto;
+  display: block;
+}
+
+/* ===== Hero Video ===== */
+.hero-video-container {
+  position: relative;
+  height: 100vh;
+  isolation: isolate;
+  overflow: hidden;
+  scroll-snap-align: start;
+}
+
+.hero-video-container video {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  object-fit: cover;
+  z-index: 0;
+}
+
+.hero-overlay {
+  position: relative;
+  height: 100%;
+  display: flex;
+  z-index: 1;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  color: rgb(255, 255, 255);
+  font-size: 2rem;
+  background-color: rgba(0, 0, 0, 0.4);
+  padding-top: var(--header-h);
+}
+
+/* ===== Abschnitte ===== */
+.content-section {
+  height: 100vh;               /* Vollbildhöhe */
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  display: flex;
+  align-items: center;          /* vertikal zentriert */
+  scroll-snap-align: start;
+}
+.section-bg-2 { background-image: url('bildsektion2.jpg'); }
+.section-bg-3 { background-image: url('bildsektion3.jpg'); }
+
+.break-snap {
+  height: auto;            /* darf so hoch sein wie der Inhalt */
+  min-height: 100vh;       /* startet vollflächig, scrollt dann normal */
+  align-items: flex-start; /* Inhalt oben beginnen lassen (optional) */
+}
+
+/* ===== Footer ===== */
+.site-footer {
+  scroll-snap-align: none;      /* Footer snapt nicht */
+  position: relative;
+  z-index: 1;
+}
+
+/* ===== Responsive ===== */
+@media (max-width: 768px) {
+  html, body { scroll-snap-type: none !important; }
+  #mainHeader h1 { font-size: 1.2rem; }
+  .hero-overlay h2 { font-size: 1.5rem; padding: 0 1rem; }
+}
+
+@media (min-width: 769px) { html { scroll-padding-top: var(--header-h); } }
+
+/* >= md: Desktop-Verhalten korrigieren */
+@media (min-width: 768px) {
+  .local-nav .navbar-nav { width: auto !important; }
+  .local-nav[dir="rtl"] .navbar-nav { margin-inline-end: auto; }
+  .local-nav[dir="ltr"] .navbar-nav { margin-inline: 0; }
+}

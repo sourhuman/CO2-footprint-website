@@ -1,0 +1,26 @@
+{
+  "data": [
+    {
+      "Land": "Deutschland",
+      "Unternehmen": "AutoCorp",
+      "CO2-Emissionen (t)": 15000
+    },
+    {
+      "Land": "Frankreich",
+      "Unternehmen": "GreenEnergy",
+      "CO2-Emissionen (t)": 9000
+    },
+    {
+      "Land": "Deutschland",
+      "Unternehmen": "SteelWorks",
+      "CO2-Emissionen (t)": 22000
+    },
+    {
+      "Land": "USA",
+      "Unternehmen": "OilMax",
+      "CO2-Emissionen (t)": 35000
+    }
+  ]
+}
+
+
